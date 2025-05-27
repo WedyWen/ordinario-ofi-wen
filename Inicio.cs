@@ -43,5 +43,10 @@ namespace ordinario_ofi_wen
                 MessageBox.Show("Error al importar, intenta de nuevo");
             }
         }
+
+        private void btnMOSTRAR_Click(object sender, EventArgs e)
+        {
+            dgDATOS.DataSource = acciones.Consultar();
+        }
     }
 }

@@ -129,7 +129,6 @@ namespace ordinario_ofi_wen
 
         public bool ImportarExcel()
         {
-
             try
             {
                 string rutaArchivo = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Autos_Importacion.xlsx");
@@ -146,12 +145,12 @@ namespace ordinario_ofi_wen
                     {
                         Auto auto = new Auto()
                         {
-                            Id = int.Parse(fila.Cell(1).GetValue<string>()),
+                            Id = fila.Cell(1).GetValue<int>(),
                             Marca = fila.Cell(2).GetValue<string>(),
                             Modelo = fila.Cell(3).GetValue<string>(),
-                            Anio = int.Parse(fila.Cell(4).GetValue<string>()),
+                            Anio = fila.Cell(4).GetValue<int>(),
                             Color = fila.Cell(5).GetValue<string>(),
-                            Precio = double.Parse(fila.Cell(6).GetValue<string>()),
+                            Precio = fila.Cell(6).GetValue<double>(),
                             Estado = fila.Cell(7).GetValue<string>()
                         };
 

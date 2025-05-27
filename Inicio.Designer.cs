@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dataGridView1 = new DataGridView();
+            dgDATOS = new DataGridView();
             btnAGREGAR = new Button();
-            btnCONSULTAR = new Button();
+            btnMOSTRAR = new Button();
             btnACTUALIZAR = new Button();
             btnELIMINAR = new Button();
             label1 = new Label();
@@ -53,16 +53,16 @@
             label8 = new Label();
             label9 = new Label();
             txbACTUALIZAR = new TextBox();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgDATOS).BeginInit();
             SuspendLayout();
             // 
-            // dataGridView1
+            // dgDATOS
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(12, 12);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(515, 257);
-            dataGridView1.TabIndex = 0;
+            dgDATOS.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgDATOS.Location = new Point(12, 12);
+            dgDATOS.Name = "dgDATOS";
+            dgDATOS.Size = new Size(515, 257);
+            dgDATOS.TabIndex = 0;
             // 
             // btnAGREGAR
             // 
@@ -74,14 +74,15 @@
             btnAGREGAR.UseVisualStyleBackColor = true;
             btnAGREGAR.Click += btnAGREGAR_Click;
             // 
-            // btnCONSULTAR
+            // btnMOSTRAR
             // 
-            btnCONSULTAR.Location = new Point(14, 287);
-            btnCONSULTAR.Name = "btnCONSULTAR";
-            btnCONSULTAR.Size = new Size(75, 23);
-            btnCONSULTAR.TabIndex = 2;
-            btnCONSULTAR.Text = "Consultar";
-            btnCONSULTAR.UseVisualStyleBackColor = true;
+            btnMOSTRAR.Location = new Point(14, 287);
+            btnMOSTRAR.Name = "btnMOSTRAR";
+            btnMOSTRAR.Size = new Size(75, 23);
+            btnMOSTRAR.TabIndex = 2;
+            btnMOSTRAR.Text = "Mostrar";
+            btnMOSTRAR.UseVisualStyleBackColor = true;
+            btnMOSTRAR.Click += btnMOSTRAR_Click;
             // 
             // btnACTUALIZAR
             // 
@@ -292,21 +293,21 @@
             Controls.Add(label1);
             Controls.Add(btnELIMINAR);
             Controls.Add(btnACTUALIZAR);
-            Controls.Add(btnCONSULTAR);
+            Controls.Add(btnMOSTRAR);
             Controls.Add(btnAGREGAR);
-            Controls.Add(dataGridView1);
+            Controls.Add(dgDATOS);
             Name = "Inicio";
             Text = "Inicio";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgDATOS).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private DataGridView dataGridView1;
+        private DataGridView dgDATOS;
         private Button btnAGREGAR;
-        private Button btnCONSULTAR;
+        private Button btnMOSTRAR;
         private Button btnACTUALIZAR;
         private Button btnELIMINAR;
         private Label label1;
