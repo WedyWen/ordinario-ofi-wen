@@ -25,5 +25,6 @@ namespace ordinario_ofi_wen
         public string Usuario { get; set; }
         public string Contrasenia { get; set; }
 
+        //YA SALIOOOOOOOOOOOOOOO
     }
 }

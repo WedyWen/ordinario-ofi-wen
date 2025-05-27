@@ -77,7 +77,6 @@ namespace ordinario_ofi_wen
             }
         }
 
-        // ✅ MÉTODO PARA IMPORTAR
         public bool ImportarExcel()
         {
             try
@@ -167,7 +166,7 @@ namespace ordinario_ofi_wen
                 return false;
             }
 
-
+            //YA SALIOOOOOOOOOOOOOOO
         }
     }
 }

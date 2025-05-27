@@ -20,5 +20,8 @@ namespace ordinario_ofi_wen
         public string Estado { get; set; }
 
         public Vehiculo() { }
+
+
+        //YA SALIOOOOOOOOOOOOOOO
     }
 }
