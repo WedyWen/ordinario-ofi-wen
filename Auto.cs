@@ -9,15 +9,23 @@ namespace ordinario_ofi_wen
     internal class Auto:Vehiculo
     {
         public Auto(int id, string marca, string modelo, int anio, string color, double precio, string estado)
-           : base(id, marca, modelo, anio, color)
+            :base (precio, estado)
         {
-            Precio = precio;
-            Estado = estado;
+            Id = id;
+            Marca = marca;
+            Modelo = modelo;
+            Anio = anio;
+            Color = color;
         }
 
         public Auto() { }
 
-        public double Precio { get; set; }
-        public string Estado { get; set; }
+        public int Id { get; set; }
+        public string Marca { get; set; }
+        public string Modelo { get; set; }
+        public int Anio { get; set; }
+        public string Color { get; set; }
+
+
     }
 }
