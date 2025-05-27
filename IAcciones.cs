@@ -10,11 +10,11 @@ namespace ordinario_ofi_wen
     {
         List<Auto> Consultar();
 
-        void Agregar();
-        void Eliminar();
-        void Actualizar();
-        void ExportarExcel();
-        void ImportarExcel();
+        bool Agregar(int Id, string Marca, string Modelo, int Anio, string Color, double Precio, string Estado);
+        bool Eliminar(int Id);
+        bool Actualizar(int Id, string Marca, string Modelo, int Anio, string Color, double Precio, string Estado);
+        bool ExportarExcel();
+        bool ImportarExcel();
 
 
     }
