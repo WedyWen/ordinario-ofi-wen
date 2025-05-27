@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ordinario_ofi_wen
 {
-    internal class Acciones:IAcciones
+    internal class Acciones : IAcciones
     {
         Correo correo = new Correo();
         List<Auto> listaAuto = new List<Auto>();
@@ -57,7 +57,7 @@ namespace ordinario_ofi_wen
                     objetotoAcctualizar.Estado = Estado;
                     return true;
                 }
-                 return true;
+                return true;
             }
             catch (Exception ex)
             {
@@ -66,7 +66,7 @@ namespace ordinario_ofi_wen
             }
         }
 
-        
+
 
         public bool Eliminar(int Id)
         {
@@ -91,34 +91,32 @@ namespace ordinario_ofi_wen
         {
             try
             {
-                var workbook = new XLWorkbook();
-                var worksheet = workbook.Worksheets.Add("Autos");
+                string rutaArchivo = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Autos_Importacion.xlsx");
 
-                // Encabezados
-                worksheet.Cell(1, 1).Value = "Id";
-                worksheet.Cell(1, 2).Value = "Marca";
-                worksheet.Cell(1, 3).Value = "Modelo";
-                worksheet.Cell(1, 4).Value = "Año";
-                worksheet.Cell(1, 5).Value = "Color";
-                worksheet.Cell(1, 6).Value = "Precio";
-                worksheet.Cell(1, 7).Value = "Estado";
+                if (!File.Exists(rutaArchivo))
+                    return false;
 
-                // Datos
-                for (int i = 0; i < listaAuto.Count; i++)
+                using (var workbook = new XLWorkbook(rutaArchivo))
                 {
-                    worksheet.Cell(i + 2, 1).Value = listaAuto[i].Id;
-                    worksheet.Cell(i + 2, 2).Value = listaAuto[i].Marca;
-                    worksheet.Cell(i + 2, 3).Value = listaAuto[i].Modelo;
-                    worksheet.Cell(i + 2, 4).Value = listaAuto[i].Anio;
-                    worksheet.Cell(i + 2, 5).Value = listaAuto[i].Color;
-                    worksheet.Cell(i + 2, 6).Value = listaAuto[i].Precio;
-                    worksheet.Cell(i + 2, 7).Value = listaAuto[i].Estado;
-                }
+                    var hoja = workbook.Worksheets.First();
+                    var filas = hoja.RowsUsed().Skip(1);
 
-                // Guardar en escritorio
-                string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                string filePath = System.IO.Path.Combine(desktopPath, "Autos.xlsx");
-                workbook.SaveAs(filePath);
+                    foreach (var fila in filas)
+                    {
+                        Auto auto = new Auto()
+                        {
+                            Id = int.Parse(fila.Cell(1).GetValue<string>()),
+                            Marca = fila.Cell(2).GetValue<string>(),
+                            Modelo = fila.Cell(3).GetValue<string>(),
+                            Anio = int.Parse(fila.Cell(4).GetValue<string>()),
+                            Color = fila.Cell(5).GetValue<string>(),
+                            Precio = double.Parse(fila.Cell(6).GetValue<string>()),
+                            Estado = fila.Cell(7).GetValue<string>()
+                        };
+
+                        listaAuto.Add(auto);
+                    }
+                }
 
                 return true;
             }
@@ -134,37 +132,31 @@ namespace ordinario_ofi_wen
 
             try
             {
-                // Ruta del archivo en escritorio
-                string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                string filePath = System.IO.Path.Combine(desktopPath, "Autos.xlsx");
+                string rutaArchivo = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Autos_Importacion.xlsx");
 
-                if (!System.IO.File.Exists(filePath))
+                if (!File.Exists(rutaArchivo))
+                    return false;
+
+                using (var workbook = new XLWorkbook(rutaArchivo))
                 {
-                    return false; // No se encontró el archivo
-                }
+                    var hoja = workbook.Worksheets.First();
+                    var filas = hoja.RowsUsed().Skip(1);
 
-                // Limpiar la lista antes de cargar
-                listaAuto.Clear();
+                    foreach (var fila in filas)
+                    {
+                        Auto auto = new Auto()
+                        {
+                            Id = int.Parse(fila.Cell(1).GetValue<string>()),
+                            Marca = fila.Cell(2).GetValue<string>(),
+                            Modelo = fila.Cell(3).GetValue<string>(),
+                            Anio = int.Parse(fila.Cell(4).GetValue<string>()),
+                            Color = fila.Cell(5).GetValue<string>(),
+                            Precio = double.Parse(fila.Cell(6).GetValue<string>()),
+                            Estado = fila.Cell(7).GetValue<string>()
+                        };
 
-                // Abrir el archivo Excel
-                var workbook = new XLWorkbook(filePath);
-                var worksheet = workbook.Worksheet("Autos");
-
-                // Leer las filas (empezamos en 2 para saltar encabezados)
-                int fila = 2;
-                while (!worksheet.Cell(fila, 1).IsEmpty())
-                {
-                    Auto auto = new Auto();
-                    auto.Id = Convert.ToInt32(worksheet.Cell(fila, 1).Value);
-                    auto.Marca = worksheet.Cell(fila, 2).Value.ToString();
-                    auto.Modelo = worksheet.Cell(fila, 3).Value.ToString();
-                    auto.Anio = Convert.ToInt32(worksheet.Cell(fila, 4).Value);
-                    auto.Color = worksheet.Cell(fila, 5).Value.ToString();
-                    auto.Precio = Convert.ToDouble(worksheet.Cell(fila, 6).Value);
-                    auto.Estado = worksheet.Cell(fila, 7).Value.ToString();
-
-                    listaAuto.Add(auto);
-                    fila++;
+                        listaAuto.Add(auto);
+                    }
                 }
 
                 return true;
@@ -174,8 +166,8 @@ namespace ordinario_ofi_wen
                 correo.EnviarCorreo(ex.ToString());
                 return false;
             }
-        }
 
-        
+
+        }
     }
 }
