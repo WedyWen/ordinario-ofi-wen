@@ -11,7 +11,7 @@ namespace ordinario_ofi_wen
     internal class Correo
     {
         private string remitente = "112653@alumnouninter.mx";
-        private string contrasena = "Del1al12";
+        private string contrasenia = "Del1al12";
 
         public void EnviarCorreo(string destinatario)
         {
@@ -25,7 +25,7 @@ namespace ordinario_ofi_wen
                 mensaje.Body = "Este es un correo enviado desde la aplicación en C#.";
 
                 SmtpClient smtp = new SmtpClient("smtp.office365.com", 587);
-                smtp.Credentials = new NetworkCredential(remitente, contrasena);
+                smtp.Credentials = new NetworkCredential(remitente, contrasenia);
                 smtp.EnableSsl = true;
 
                 smtp.Send(mensaje);
@@ -42,7 +42,7 @@ namespace ordinario_ofi_wen
                     mensajeError.Body = $"Error al enviar correo a {destinatario}:\n\n{ex.Message}";
 
                     SmtpClient smtpError = new SmtpClient("smtp.office365.com", 587);
-                    smtpError.Credentials = new NetworkCredential(remitente, contrasena);
+                    smtpError.Credentials = new NetworkCredential(remitente, contrasenia);
                     smtpError.EnableSsl = true;
 
                     smtpError.Send(mensajeError);
