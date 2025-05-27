@@ -21,7 +21,9 @@ namespace ordinario_ofi_wen
 
         private void btnAGREGAR_Click(object sender, EventArgs e)
         {
-
+            if (acciones.Agregar(Convert.ToInt32(txbID.Text), txbMARCA.Text, txbMODELO.Text, Convert.ToInt32(txbANIO.Text), txbCOLOR.Text, Convert.ToDouble(txbPRECIO.Text), txbESTADO.Text))
+                MessageBox.Show("Agregado con exito");
+            else MessageBox.Show("Error al exportar, intenta de nuevo");
         }
 
         private void btnEXP_Click(object sender, EventArgs e)
@@ -46,7 +48,23 @@ namespace ordinario_ofi_wen
 
         private void btnMOSTRAR_Click(object sender, EventArgs e)
         {
+            dgDATOS.DataSource = null;
             dgDATOS.DataSource = acciones.Consultar();
+        }
+
+        private void btnELIMINAR_Click(object sender, EventArgs e)
+        {
+            if (acciones.Eliminar(Convert.ToInt32(txbELIMINAR.Text)))
+                MessageBox.Show("Eliminada con exito");
+            else
+                MessageBox.Show("Error al eliminar, intentalo de nuevo");
+        }
+
+        private void btnACTUALIZAR_Click(object sender, EventArgs e)
+        {
+            if (acciones.Actualizar(Convert.ToInt32(txbACTUALIZARID.Text), txbMARCA.Text, txbMODELO.Text, Convert.ToInt32(txbANIO.Text), txbCOLOR.Text, Convert.ToDouble(txbPRECIO.Text), txbESTADO.Text))
+                MessageBox.Show("Actualizado con exito");
+            else MessageBox.Show("Fallo al actualizar");
         }
     }
 }

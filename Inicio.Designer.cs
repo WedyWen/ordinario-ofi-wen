@@ -52,7 +52,7 @@
             txbELIMINAR = new TextBox();
             label8 = new Label();
             label9 = new Label();
-            txbACTUALIZAR = new TextBox();
+            txbACTUALIZARID = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgDATOS).BeginInit();
             SuspendLayout();
             // 
@@ -92,6 +92,7 @@
             btnACTUALIZAR.TabIndex = 3;
             btnACTUALIZAR.Text = "Actualizar";
             btnACTUALIZAR.UseVisualStyleBackColor = true;
+            btnACTUALIZAR.Click += btnACTUALIZAR_Click;
             // 
             // btnELIMINAR
             // 
@@ -101,6 +102,7 @@
             btnELIMINAR.TabIndex = 4;
             btnELIMINAR.Text = "Eliminar";
             btnELIMINAR.UseVisualStyleBackColor = true;
+            btnELIMINAR.Click += btnELIMINAR_Click;
             // 
             // label1
             // 
@@ -259,19 +261,19 @@
             label9.TabIndex = 23;
             label9.Text = "Id A:";
             // 
-            // txbACTUALIZAR
+            // txbACTUALIZARID
             // 
-            txbACTUALIZAR.Location = new Point(713, 361);
-            txbACTUALIZAR.Name = "txbACTUALIZAR";
-            txbACTUALIZAR.Size = new Size(50, 23);
-            txbACTUALIZAR.TabIndex = 24;
+            txbACTUALIZARID.Location = new Point(713, 361);
+            txbACTUALIZARID.Name = "txbACTUALIZARID";
+            txbACTUALIZARID.Size = new Size(50, 23);
+            txbACTUALIZARID.TabIndex = 24;
             // 
             // Inicio
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(txbACTUALIZAR);
+            Controls.Add(txbACTUALIZARID);
             Controls.Add(label9);
             Controls.Add(label8);
             Controls.Add(txbELIMINAR);
@@ -329,6 +331,6 @@
         private TextBox txbELIMINAR;
         private Label label8;
         private Label label9;
-        private TextBox txbACTUALIZAR;
+        private TextBox txbACTUALIZARID;
     }
 }
