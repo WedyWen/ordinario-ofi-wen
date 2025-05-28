@@ -53,6 +53,8 @@
             label8 = new Label();
             label9 = new Label();
             txbACTUALIZARID = new TextBox();
+            btnCONTARELEM = new Button();
+            btnSUMA = new Button();
             ((System.ComponentModel.ISupportInitialize)dgDATOS).BeginInit();
             SuspendLayout();
             // 
@@ -268,11 +270,33 @@
             txbACTUALIZARID.Size = new Size(50, 23);
             txbACTUALIZARID.TabIndex = 24;
             // 
+            // btnCONTARELEM
+            // 
+            btnCONTARELEM.Location = new Point(14, 403);
+            btnCONTARELEM.Name = "btnCONTARELEM";
+            btnCONTARELEM.Size = new Size(122, 23);
+            btnCONTARELEM.TabIndex = 25;
+            btnCONTARELEM.Text = "ContarElementos";
+            btnCONTARELEM.UseVisualStyleBackColor = true;
+            btnCONTARELEM.Click += btnCONTARELEM_Click;
+            // 
+            // btnSUMA
+            // 
+            btnSUMA.Location = new Point(156, 403);
+            btnSUMA.Name = "btnSUMA";
+            btnSUMA.Size = new Size(75, 23);
+            btnSUMA.TabIndex = 26;
+            btnSUMA.Text = "Suma Autos";
+            btnSUMA.UseVisualStyleBackColor = true;
+            btnSUMA.Click += btnSUMA_Click;
+            // 
             // Inicio
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnSUMA);
+            Controls.Add(btnCONTARELEM);
             Controls.Add(txbACTUALIZARID);
             Controls.Add(label9);
             Controls.Add(label8);
@@ -332,5 +356,7 @@
         private Label label8;
         private Label label9;
         private TextBox txbACTUALIZARID;
+        private Button btnCONTARELEM;
+        private Button btnSUMA;
     }
 }

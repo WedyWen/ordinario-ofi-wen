@@ -13,7 +13,6 @@ namespace ordinario_ofi_wen
     public partial class Inicio : Form
     {
         Acciones acciones = new Acciones();
-
         public Inicio()
         {
             InitializeComponent();
@@ -65,6 +64,18 @@ namespace ordinario_ofi_wen
             if (acciones.Actualizar(Convert.ToInt32(txbACTUALIZARID.Text), txbMARCA.Text, txbMODELO.Text, Convert.ToInt32(txbANIO.Text), txbCOLOR.Text, Convert.ToDouble(txbPRECIO.Text), txbESTADO.Text))
                 MessageBox.Show("Actualizado con exito");
             else MessageBox.Show("Fallo al actualizar");
+        }
+
+        private void btnCONTARELEM_Click(object sender, EventArgs e)
+        {
+            int cantidad = acciones.ContarAutos();
+            MessageBox.Show($"Tienes: {cantidad} elementos hasta ahora");
+        }
+
+        private void btnSUMA_Click(object sender, EventArgs e)
+        {
+            double suma = acciones.SumaPrecios();
+            MessageBox.Show($"La suma total de precios de los autos es: {suma}");
         }
     }
 }

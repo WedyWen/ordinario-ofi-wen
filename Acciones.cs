@@ -133,7 +133,6 @@ namespace ordinario_ofi_wen
                 {
                     var hoja = workbook.Worksheets.Add("Autos");
 
-                    // Encabezados
                     hoja.Cell(1, 1).Value = "Id";
                     hoja.Cell(1, 2).Value = "Marca";
                     hoja.Cell(1, 3).Value = "Modelo";
@@ -166,7 +165,22 @@ namespace ordinario_ofi_wen
                 return false;
             }
 
-            //YA SALIOOOOOOOOOOOOOOO
         }
+
+        public int ContarAutos()
+         {
+            return listaAuto.Count;
+         }
+
+        public double SumaPrecios()
+        {
+            double suma = 0;
+            foreach (var auto in listaAuto)
+            {
+                suma += auto.Precio;
+            }
+            return suma;
+        }
+
     }
 }
